@@ -13,11 +13,12 @@ const LoginForm = (props) => {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false)
 
+    var urlAPI = 'https://gear-api-project.herokuapp.com'
 
     const handleLogin = () => {
         setError(null);
         setLoading(true);
-        axios.post("http://localhost:3000/dangnhap", {
+        axios.post(`${urlAPI}/dangnhap`, {
             USERNAME: username,
             PASSWORD: password
         }).then(async response => {

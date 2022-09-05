@@ -10,6 +10,7 @@ import Leftmenu from '../Trangchu/Leftmenu';
 import Footer from '../Footer/Footer';
 import CbbLoai from '../Admin/CbbLoai';
 
+var urlAPI = 'https://gear-api-project.herokuapp.com'
 
 class Suasp extends React.Component {
 
@@ -34,7 +35,7 @@ class Suasp extends React.Component {
       const id = this.props?.id
 
      // console.log(id);
-      axios.get(`http://localhost:3000/sanpham/${id}`)
+      axios.get(`${urlAPI}/sanpham/${id}`)
         .then(res => {
             //console.log(res);
           const news = res.data;
@@ -68,7 +69,7 @@ class Suasp extends React.Component {
         };
 
         const id = this.props?.id;
-        axios.put(`http://localhost:3000/sanpham/${id}`, newItem, { headers: {'Accept': 'application/json','Content-Type': 'application/json'}}).then(res => {
+        axios.put(`${urlAPI}/sanpham/${id}`, newItem, { headers: {'Accept': 'application/json','Content-Type': 'application/json'}}).then(res => {
             console.log(res)
             if (res.data.status === 400) {
                 alert("Sản phẩm đã tồn tại xin vui lòng thay đổi!!! ")

@@ -2,6 +2,8 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 
+var urlAPI = 'https://gear-api-project.herokuapp.com'
+
 class Changepass extends React.Component {
 
     constructor(props) {
@@ -18,7 +20,7 @@ class Changepass extends React.Component {
       let data = sessionStorage.getItem("user") ? JSON.parse(sessionStorage.getItem("user")) : [];
       var idtk = data?.[0] ? data?.[0]?.IDTK : null
       //console.log(idtk);
-      axios.get(`http://localhost:3000/taikhoan/${idtk}`)
+      axios.get(`${urlAPI}/taikhoan/${idtk}`)
         .then(res => {
           const news = res.data;
           this.setState({ news: news, matkhau: news[0].PASSWORD});
@@ -72,7 +74,7 @@ class Changepass extends React.Component {
             {
                 let data = sessionStorage.getItem("user") ? JSON.parse(sessionStorage.getItem("user")) : [];
                 var idtk = data?.[0] ? data?.[0]?.IDTK : null
-                axios.put(`http://localhost:3000/taikhoan/${idtk}`, newItem, { headers: {'Accept': 'application/json','Content-Type': 'application/json'}}).then(res => {
+                axios.put(`${urlAPI}/taikhoan/${idtk}`, newItem, { headers: {'Accept': 'application/json','Content-Type': 'application/json'}}).then(res => {
           
                     if (res.data.status === 200) {
                         alert("Cập nhật mật khẩu thành công !!!")

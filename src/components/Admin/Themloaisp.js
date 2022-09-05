@@ -9,21 +9,13 @@ import axios from 'axios';
 import Leftmenu from '../Trangchu/Leftmenu';
 import Footer from '../Footer/Footer';
 
-// import Banmain from '../images/banner_main.jpg';
-// import banside1 from '../images/banner_side_1.jpg';
-// import banside2 from '../images/banner_side_2.jpg';
-// import bgkeyboard from '../images/bg_keyboard.png';
-// import bgheadphone from '../images/bg_headphone.png';
-// import bgmouse from '../images/bg_mouse.png';
 // import p1 from '../images/p_1.png';
 import p2 from '../../images/p_2.png';
 // import p3 from '../images/p_3.png';
 // import p4 from '../images/p_4.png';
 import Banproduct from '../../images/banner_product.jpg';
-// import Sanpham from './Sanpham';
-// import Checkloai from './Checkloai';
 
-// - ý là khi thêm loại thành công back về trang quản lý loại sp? có vì e có link vào k bk link đúng k 
+var urlAPI = 'https://gear-api-project.herokuapp.com'
 
 class Themloaisp extends React.Component {
 
@@ -36,7 +28,7 @@ class Themloaisp extends React.Component {
 
   componentDidMount() {
       this.refreshCheckFilled()
-      axios.get(`http://localhost:3000/loaisanpham`)
+      axios.get(`${urlAPI}/loaisanpham`)
         .then(res => {
           const news = res.data;
           this.setState({ news: news.news });
@@ -71,7 +63,7 @@ class Themloaisp extends React.Component {
         const newItem = {
             TENLOAI: this.state.tenloai 
         };
-        axios.post("http://localhost:3000/loaisanpham", newItem, { headers: {'Accept': 'application/json','Content-Type': 'application/json'}}).then(res => {
+        axios.post(`${urlAPI}/loaisanpham`, newItem, { headers: {'Accept': 'application/json','Content-Type': 'application/json'}}).then(res => {
             if (res.data.status === 500) {
                 alert("Loại sản phẩm đã tồn tại xin vui lòng thay đổi!!! ")
             }

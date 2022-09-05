@@ -4,6 +4,8 @@ import {Link} from 'react-router-dom';
 
 import Background from '../../images/bg_login.png'
 
+var urlAPI = 'https://gear-api-project.herokuapp.com'
+
 class SignupFormn extends React.Component {
     constructor(props) {
 		super(props);
@@ -14,9 +16,10 @@ class SignupFormn extends React.Component {
 
     componentDidMount() {
         this.refreshCheckFilled()
-        axios.get("http://localhost:3000/taikhoan").then(res => {
+        axios.get(`${urlAPI}/taikhoan`).then(res => {
             const news = res.data;
             this.setState({news: news.news});
+
         })
         .catch(error => console.error(error));
     };
@@ -25,6 +28,7 @@ class SignupFormn extends React.Component {
         this.setState({isNameFilled: undefined, isPhoneFilled: undefined, isUserFilled: undefined, isPassFilled: undefined, isAddrFilled: undefined, isEmailFilled: undefined, isCoPassFilled: undefined})
     }
 
+    // kiểm tra nếu input có giá trị chạy hàm check để gán cho fill = true or false
     handleInputChange = (event) => {
         const target = event.target;
         const value = target.value;
@@ -55,6 +59,7 @@ class SignupFormn extends React.Component {
         }
     };
 
+    //kiểm tra có giá trị thì gán state = true 
     checkValidInput = (value, state) => {
         if (value !== "") {
           this.setState({ [state]: true})
@@ -80,7 +85,7 @@ class SignupFormn extends React.Component {
 
         if(newItem.PASSWORD === coPass.COMFIRM)
         {
-            axios.post("http://localhost:3000/taikhoan", newItem, { headers: {'Accept': 'application/json','Content-Type': 'application/json'}}).then(res => {
+            axios.post(`${urlAPI}/taikhoan`, newItem, { headers: {'Accept': 'application/json','Content-Type': 'application/json'}}).then(res => {
                 console.log(res)
                 if (res.data.status === 500) {
                     alert("Username đã tồn tại xin vui lòng thay đổi!!! ")
@@ -110,6 +115,7 @@ class SignupFormn extends React.Component {
     }
     
     render() {
+        // đảm bảo nhập đầy đủ fill mới cho submit
         const isValid = () => {
             return this.state.isNameFilled === true && this.state.isPhoneFilled === true && this.state.isUserFilled === true && this.state.isPassFilled === true && this.state.isAddrFilled === true && this.state.isEmailFilled === true && this.state.isCoPassFilled === true
             }

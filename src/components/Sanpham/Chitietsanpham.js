@@ -9,18 +9,19 @@ import axios from 'axios';
 import Leftmenu from '../Trangchu/Leftmenu';
 import Footer from '../Footer/Footer';
 
+var urlAPI = 'https://gear-api-project.herokuapp.com'
 
 const Chitietsanpham = (props) => {
     const [sp, setSP] = useState({});
     const [thumb, sThumb] = useState("https://ayjoe.engrave.site/img/default.jpg")
-
+    
     const ServerFetching = () => {
-        axios.get(`http://localhost:3000/sanpham/${props.match.params?.id}`)
+        axios.get(`${urlAPI}/sanpham/${props.match.params?.id}`)
         .then(res => {
             const {data} = res;
             setSP({...data})
             sThumb(data.URLSP)
-            window.scrollTo(0, 0)
+            window.scrollTo(0, 0) //move lên top 0 right 0
         })
         .catch(error => console.log(error));
     }
@@ -29,7 +30,7 @@ const Chitietsanpham = (props) => {
         ServerFetching();
     }, [])
 
-        return (
+        return ( 
             <div>
                 <section>
                 <div className="product-detail__sect"> 
@@ -93,7 +94,7 @@ const ThemGioHang = (props) => {
                 IDSP: props.IDSP,
                 SOLUONG: 1
             }
-            axios.post(`http://localhost:3000/giohang/`, objectInput)
+            axios.post(`${urlAPI}/giohang/`, objectInput)
             .then(res => {
                 var {status} = res.data;
                 if(status === 200){
@@ -130,7 +131,7 @@ const Muangay = (props) => {
                 SOLUONG: 1
             }
 
-            axios.post(`http://localhost:3000/giohang/`, objectInput)
+            axios.post(`${urlAPI}/giohang/`, objectInput)
             .then(res => {
                 var {status} = res.data;
                 if(status === 200){

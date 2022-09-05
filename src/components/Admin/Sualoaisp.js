@@ -4,6 +4,8 @@ import axios from 'axios';
 
 import Sualsp from './Sualsp';
 
+var urlAPI = 'https://gear-api-project.herokuapp.com'
+
 class Sualoaisp extends React.Component {
 
     constructor(props) {
@@ -15,7 +17,7 @@ class Sualoaisp extends React.Component {
 
   componentDidMount() {
       const id = this.props?.id
-      axios.get(`http://localhost:3000/loaisanpham/${id}`)
+      axios.get(`${urlAPI}/loaisanpham/${id}`)
         .then(res => {
           const news = res.data;
           this.setState({ news: news.news });
@@ -41,7 +43,7 @@ class Sualoaisp extends React.Component {
         };
 
       
-        axios.post("http://localhost:3000/loaisanpham", newItem, { headers: {'Accept': 'application/json','Content-Type': 'application/json'}}).then(res => {
+        axios.post(`${urlAPI}/loaisanpham`, newItem, { headers: {'Accept': 'application/json','Content-Type': 'application/json'}}).then(res => {
 
             let news = this.state.news;
             news = [newItem, ...news];

@@ -25,7 +25,7 @@ import Banproduct from '../../images/banner_product.jpg';
 // import Sanpham from './Sanpham';
 // import Checkloai from './Checkloai';
 
-
+var urlAPI = 'https://gear-api-project.herokuapp.com'
 
 class QLLoaisp extends React.Component {
 
@@ -35,7 +35,7 @@ class QLLoaisp extends React.Component {
   }
 
   componentDidMount() {
-      axios.get(`http://localhost:3000/loaisanpham`)
+      axios.get(`${urlAPI}/loaisanpham`)
         .then(res => {
           const loaisanpham = res.data;
           this.setState({ loaisanpham: loaisanpham });
@@ -47,7 +47,7 @@ class QLLoaisp extends React.Component {
     {
       if(window.confirm('Bạn chắc chắn muốn xóa không?'))
       {
-        axios.delete(`http://localhost:3000/loaisanpham/${id}`, {
+        axios.delete(`${urlAPI}/loaisanpham/${id}`, {
           method:'DELETE',
           headers: {
             'Accept': 'application/json',

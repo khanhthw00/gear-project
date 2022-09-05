@@ -24,6 +24,8 @@ import Banproduct from '../../images/banner_product.jpg';
 // import Sanpham from './Sanpham';
 // import Checkloai from './Checkloai';
 
+var urlAPI = 'https://gear-api-project.herokuapp.com'
+
 
 class Canhan extends React.Component {
 
@@ -45,7 +47,7 @@ class Canhan extends React.Component {
       let data = sessionStorage.getItem("user") ? JSON.parse(sessionStorage.getItem("user")) : [];
       var idtk = data?.[0] ? data?.[0]?.IDTK : null
       //console.log(idtk);
-      axios.get(`http://localhost:3000/tkkh/${idtk}`)
+      axios.get(`${urlAPI}/tkkh/${idtk}`)
         .then(res => {
             //console.log(res.data);
           const news = res.data;

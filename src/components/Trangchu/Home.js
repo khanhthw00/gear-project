@@ -1,10 +1,5 @@
 import React, { Fragment } from 'react';
 // import {Link} from 'react-router-dom';
-// import axios from 'axios';
-
-// import Menu from './Menu'
-// import Imagelogo from '../images/logo.png';
-// import Image from '../images/banner_mini.jpg';
 
 import Leftmenu from './Leftmenu';
 import Footer from '../Footer/Footer';

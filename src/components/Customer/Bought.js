@@ -6,6 +6,8 @@ import Moment from 'react-moment';
 import { BsArrowLeft } from "react-icons/bs";
 import { BsFillEyeFill} from "react-icons/bs";
 
+var urlAPI = 'https://gear-api-project.herokuapp.com'
+
 const Bought = (props) => {
       const [donhang, sDonhang] = useState([]);
       let data = sessionStorage.getItem("user") ? JSON.parse(sessionStorage.getItem("user")) : [];
@@ -13,7 +15,7 @@ const Bought = (props) => {
   
       const Donhang = () => {
         //console.log(idtk);
-        axios.get(`http://localhost:3000/donhang/${idtk}`)
+        axios.get(`${urlAPI}/donhang/${idtk}`)
           .then(res => {
             const donhang = res.data;
             sDonhang(donhang)
@@ -26,10 +28,10 @@ const Bought = (props) => {
       const handleDeleteSubmit = (iddh) => {
         if(window.confirm('Bạn chắc chắn muốn hủy đơn không?'))
         {
-          axios.get(`http://localhost:3000/tttrangthai/${iddh}`)
+          axios.get(`${urlAPI}/tttrangthai/${iddh}`)
           .then(res => {
             if(res.data.status === 200) {
-              axios.delete(`http://localhost:3000/huydonhang/${iddh}`, {
+              axios.delete(`${urlAPI}/huydonhang/${iddh}`, {
                 method:'DELETE',
                 headers: {
                   'Accept': 'application/json',

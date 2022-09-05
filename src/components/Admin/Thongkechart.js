@@ -9,7 +9,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import {BsPlusSquare,BsBoxArrowInRight } from "react-icons/bs";
 
 import {ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
-
+var urlAPI = 'https://gear-api-project.herokuapp.com'
 
 const Example =() => {
     const [startDate, setStartDate] = useState(new Date());
@@ -20,7 +20,7 @@ const Example =() => {
     let ngaykt = endDate.toLocaleDateString("fr-CA")
     
     const getThongke = (ngaybd, ngaykt) => { 
-            axios.get(`http://localhost:3000/thongketrongkhoang/${ngaybd}/${ngaykt}`)
+            axios.get(`${urlAPI}/thongketrongkhoang/${ngaybd}/${ngaykt}`)
             .then(res => {
               const thongke = res.data;
             //   console.log(thongke)

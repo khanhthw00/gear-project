@@ -6,6 +6,8 @@ import {BsPlusSquare,BsBoxArrowInRight } from "react-icons/bs";
 
 import {ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 
+var urlAPI = 'https://gear-api-project.herokuapp.com'
+
 class Thongketable extends React.Component {
 
     constructor(props) {
@@ -16,7 +18,7 @@ class Thongketable extends React.Component {
     }
 
     componentDidMount() {
-      axios.get(`http://localhost:3000/thongkesp`)
+      axios.get(`${urlAPI}/thongkesp`)
         .then(res => {
           const data = res.data;
           this.setState({ data: data});

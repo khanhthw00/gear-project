@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import axios from 'axios';
 
 import p2 from '../../images/p_2.png';
+var urlAPI = 'https://gear-api-project.herokuapp.com'
 
 class Bestproduct extends React.Component {
 
@@ -15,7 +16,7 @@ class Bestproduct extends React.Component {
 	}
 
     componentDidMount() {
-        axios.get(`http://localhost:3000/spbanchay`)
+        axios.get(`${urlAPI}/spbanchay`)
         .then(res => {
           const sanpham = res.data;
           this.setState({ sanpham });

@@ -8,6 +8,7 @@ import Trangthai from './Trangthai';
 // import Sanpham from './Sanpham';
 // import Checkloai from './Checkloai';
 
+var urlAPI = 'https://gear-api-project.herokuapp.com'
 
 class DonHang extends React.Component {
   
@@ -48,7 +49,7 @@ class DonHang extends React.Component {
   };
 
   if(this.state.idtrangthai === 4) {
-    axios.delete(`http://localhost:3000/huydonhang/${id}`, {
+    axios.delete(`${urlAPI}/huydonhang/${id}`, {
               method:'DELETE',
               headers: {
                 'Accept': 'application/json',
@@ -68,7 +69,7 @@ class DonHang extends React.Component {
     alert("Không thể cập nhật trạng thái chưa duyệt!!!")
   }
   else {
-    axios.put(`http://localhost:3000/ttdonhang/${id}`, newItem, { headers: {'Accept': 'application/json','Content-Type': 'application/json'}}).then(res => {
+    axios.put(`${urlAPI}/ttdonhang/${id}`, newItem, { headers: {'Accept': 'application/json','Content-Type': 'application/json'}}).then(res => {
       if (res.data.status === 200) {
         this.getDonHang()
         alert("Thay đổi trạng thái thành công")
@@ -123,7 +124,7 @@ class QLDonhang extends React.Component {
 
       this.getDonHang()
     
-      axios.get(`http://localhost:3000/trangthai`)
+      axios.get(`${urlAPI}/trangthai`)
         .then(res => {
           const trangthai = res.data;
           this.setState({ trangthai: trangthai});
@@ -147,7 +148,7 @@ class QLDonhang extends React.Component {
       };
 
       this.setState({check: true})
-      axios.get(`http://localhost:3000/donhangtheott/${search.IDTRANGTHAI}`).then(res => {
+      axios.get(`${urlAPI}/donhangtheott/${search.IDTRANGTHAI}`).then(res => {
         
         const dontheoid = res.data;
         this.setState({ dontheoid: dontheoid});
@@ -161,7 +162,7 @@ class QLDonhang extends React.Component {
   }
 
     getDonHang = () => {
-      axios.get(`http://localhost:3000/donhang`)
+      axios.get(`${urlAPI}/donhang`)
       .then(res => {
         const donhang = res.data;
         this.setState({ donhang: donhang});

@@ -3,6 +3,8 @@ import {Link, Redirect} from 'react-router-dom';
 import axios from 'axios';
 import {BsPlusSquare,BsBoxArrowInRight } from "react-icons/bs";
 
+var urlAPI = 'https://gear-api-project.herokuapp.com'
+
 class Quanly extends React.Component {
 
   state = {
@@ -21,7 +23,7 @@ class Quanly extends React.Component {
         idAdmin: id
       })
 
-      axios.get(`http://localhost:3000/sanpham`)
+      axios.get(`${urlAPI}/sanpham`)
         .then(res => {
           const sanpham = res.data;
           this.setState({ sanpham: sanpham });
@@ -34,13 +36,13 @@ class Quanly extends React.Component {
     handleDeleteSubmit = (id) => {
       if(window.confirm('Bạn chắc chắn muốn xóa không?'))
       {
-        axios.get(`http://localhost:3000/sptrongdh/${id}`)
+        axios.get(`${urlAPI}/sptrongdh/${id}`)
         .then(res => {
           if (res.data.status === 200) {
             alert("Sản phẩm tồn tại trong đơn hàng không thể xóa!!")
           }
           if (res.data.status === 400) {
-            axios.delete(`http://localhost:3000/sanpham/${id}`, {
+            axios.delete(`${urlAPI}/sanpham/${id}`, {
               method:'DELETE',
               headers: {
                 'Accept': 'application/json',

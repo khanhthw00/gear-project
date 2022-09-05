@@ -1,23 +1,21 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
-
-import Menu from './Menu'
-import Imagelogo from '../../images/logo.png';
-import Image from '../../images/banner_mini.jpg';
-import Leftmenu from '../../components/Trangchu/Leftmenu';
 import { useSessionStorageString } from "react-use-window-sessionstorage";
+
+var urlAPI = 'https://gear-api-project.herokuapp.com'
 
 const Change = () => {
     const [authentication, sAuthentication] = useSessionStorageString("user", null);
+    // console.log("test thu:" , authentication, sAuthentication)
     const [taikhoan, sTaikhoan] = useState([]);
 
     useEffect(() => {
-       console.log(authentication)
+       console.log('thu nhat',authentication)
     }, [authentication])
 
     const gettaikhoan = () => {
-        axios.get("http://localhost:3000/taikhoan").then(res => {
+        axios.get(`${urlAPI}/taikhoan`).then(res => {
             const taikhoan = res.data;
             sTaikhoan(taikhoan);
         })

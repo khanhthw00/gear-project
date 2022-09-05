@@ -13,6 +13,8 @@ import Banproduct from '../../images/banner_product.jpg';
 import Sanpham from './Sanpham';
 import Checkloai from './Checkloai';
 
+var urlAPI = 'https://gear-api-project.herokuapp.com'
+
 
 // class Sanphampage extends React.Component {
 //     constructor(props) {
@@ -135,26 +137,9 @@ import Checkloai from './Checkloai';
 
 
 class Sanphampage extends React.Component {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //       data: [],
-    //       check: false,
-    //       strSearch: ""
-    //     }
-    // }
-
-    // componentDidMount() {
-    //     axios.get(`http://localhost:3000/thongkesp`)
-    //       .then(res => {
-    //         const data = res.data;
-    //         this.setState({ data: data});
-    //         console.log(data)
-    //       })
-    //       .catch(error => console.log(error));
-    //   }
 
     render() {
+        // console.log('match nè', this.props.match)
         return (
             <div>
                 <section>
@@ -178,29 +163,7 @@ class Sanphampage extends React.Component {
                                 </div>
                                 
                                 <div className="col-md-8">
-                                {/* <div className="row searchsp">
-                                    <form className="d-flex">
-                                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                                    </form>
-                                </div> */}
-                                    {/* <div className="sub-filter d-flex">
-                                        <div className="for-filter">
-                                            <select className="form-select" aria-label="Default select example">
-                                            <option selected>9 sản phẩm</option>
-                                            <option value={1}>One</option>
-                                            <option value={2}>Two</option>
-                                            <option value={3}>Three</option>
-                                            </select>
-                                        </div>
-                                        <div className="for-filter">
-                                            <select className="form-select" aria-label="Default select example">
-                                            <option selected>Phổ biến</option>
-                                            <option value={1}>One</option>
-                                            <option value={2}>Two</option>
-                                            <option value={3}>Three</option>
-                                            </select>
-                                        </div>
-                                    </div> */}
+                                
                                     <div className="item-product__wrap d-flex"> 
                                         <Sanpham id={this.props.match.params.id}/>
                                     </div>

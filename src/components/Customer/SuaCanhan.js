@@ -24,6 +24,7 @@ import Banproduct from '../../images/banner_product.jpg';
 // import Sanpham from './Sanpham';
 // import Checkloai from './Checkloai';
 
+var urlAPI = 'https://gear-api-project.herokuapp.com'
 
 class Canhan extends React.Component {
 
@@ -46,7 +47,7 @@ class Canhan extends React.Component {
       let data = sessionStorage.getItem("user") ? JSON.parse(sessionStorage.getItem("user")) : [];
       var idtk = data?.[0] ? data?.[0]?.IDTK : null
       console.log(idtk);
-      axios.get(`http://localhost:3000/tkkh/${idtk}`)
+      axios.get(`${urlAPI}/tkkh/${idtk}`)
         .then(res => {
             //console.log(res.data);
           const news = res.data;
@@ -81,7 +82,7 @@ class Canhan extends React.Component {
         };
 
 
-        axios.put(`http://localhost:3000/khachhang/${idtk}`, newItem, { headers: {'Accept': 'application/json','Content-Type': 'application/json'}}).then(res => {
+        axios.put(`${urlAPI}/khachhang/${idtk}`, newItem, { headers: {'Accept': 'application/json','Content-Type': 'application/json'}}).then(res => {
           
             if (res.data.status === 400) {
                 alert("Email sai định dạng, xin vui lòng kiểm tra lại!!!")

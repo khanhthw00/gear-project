@@ -10,6 +10,8 @@ import Soluong from './Soluong';
 import Leftmenu from '../Trangchu/Leftmenu';
 import Footer from '../Footer/Footer';
 
+var urlAPI = 'https://gear-api-project.herokuapp.com'
+
 const SPgiohang = () => {
     const [giohang, sGiohang] = useState([])
 
@@ -17,7 +19,7 @@ const SPgiohang = () => {
       let data = sessionStorage.getItem("user") ? JSON.parse(sessionStorage.getItem("user")) : [];
       var id = data?.[0] ? data?.[0]?.IDTK : null
         if(id){
-            axios.get(`http://localhost:3000/giohang/${id}`)
+            axios.get(`${urlAPI}/giohang/${id}`)
             .then(res => {
               const giohang = res.data;
               sGiohang(giohang);
@@ -38,8 +40,7 @@ Trong kho chỉ còn: ${giohang[i].SOLUONG} sản phẩm`)
       }
     }
 
-    const incrementCount = (i) => {
-      
+    const incrementCount = (i) => {      
       if(giohang[i].SOLUONG >= (giohang[i].count + 1)){
         giohang[i].count = (giohang[i]?.count || 1) + 1;
         sGiohang([...giohang])
@@ -53,7 +54,7 @@ Trong kho chỉ còn: ${giohang[i].SOLUONG} sản phẩm`)
     const decrementCount = (i) => {
       if((giohang[i]?.count || 1) > 0){
         giohang[i].count = (giohang[i]?.count || 1) - 1;
-        sGiohang([...giohang])
+        sGiohang([...giohang]) //cập nhật lại các sp trong giỏ hàng
       }
     }
 
@@ -129,7 +130,7 @@ const ButtonThanhToan = React.memo((props) => {
       var id = data?.[0] ? data?.[0]?.IDTK : null
       axios({
         method: "POST",
-        url: `http://localhost:3000/giohang/update/`,
+        url: `${urlAPI}/giohang/update/`,
         data: {
           id: id,
           giohang: props.giohang || []
@@ -161,7 +162,7 @@ const XoaSanPhamTrongGio = (props) => {
       var idtk = data?.[0] ? data?.[0]?.IDTK : null
       var idsp = props.IDSP;
 
-      axios.delete(`http://localhost:3000/ctgh/${idtk}/${idsp}`)
+      axios.delete(`${urlAPI}/ctgh/${idtk}/${idsp}`)
       .then(res => {
           alert("Xóa sản phẩm trong giỏ thành công!")
       })

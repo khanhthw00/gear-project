@@ -5,6 +5,8 @@ import axios from 'axios';
 
 import p2 from '../../images/p_2.png';
 
+var urlAPI = 'https://gear-api-project.herokuapp.com'
+
 class Showsanpham extends React.Component {
 
     constructor(props) {
@@ -15,7 +17,7 @@ class Showsanpham extends React.Component {
 	}
 
     componentDidMount() {
-        axios.get(`http://localhost:3000/sanpham-theoloai/${this.props.id}`)
+        axios.get(`${urlAPI}/sanpham-theoloai/${this.props.id}`)
         .then(res => {
           const sanpham = res.data;
           this.setState({ sanpham });

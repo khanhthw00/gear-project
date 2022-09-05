@@ -2,6 +2,8 @@ import React, { Fragment, useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 
+var urlAPI = 'https://gear-api-project.herokuapp.com'
+
 // const Sanpham = (props) => {
 //     const [sanpham, sSanpham] = useState([])
 
@@ -47,7 +49,7 @@ const Sanpham = (props) => {
     const [sanpham, sSanpham] = useState([])
 
     const ServerFetching = () => {
-        axios.get(`http://localhost:3000/sanpham-theoloai/${props.id}`)
+        axios.get(`${urlAPI}/sanpham-theoloai/${props.id}`)
             .then(res => {
               const sanpham = res.data;
               sSanpham([...sanpham])
@@ -89,6 +91,7 @@ const Muangay = (props) => {
     let data = sessionStorage.getItem("user") ? JSON.parse(sessionStorage.getItem("user")) : [];
     var idtk = data?.[0] ? data?.[0]?.IDTK : null
     let id = props.idsp;    
+    // console.log('hello nè', JSON.parse(sessionStorage.getItem("user"))) 
 
     //console.log(id)
     const MuaSP = () => {
@@ -103,7 +106,7 @@ const Muangay = (props) => {
                 SOLUONG: 1
             }
 
-            axios.post(`http://localhost:3000/giohang/`, objectInput)
+            axios.post(`${urlAPI}/giohang/`, objectInput)
             .then(res => {
                 var {status} = res.data;
                 if(status === 200){

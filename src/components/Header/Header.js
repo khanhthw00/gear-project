@@ -11,8 +11,9 @@ import Change from './Change';
   const Header = () => {
     const [idTK, sidTK] = useState(null)
     let data = sessionStorage.getItem("user") ? JSON.parse(sessionStorage.getItem("user")) : [];
+    // console.log("dataSess", data)
     var id = data?.[0] ? data?.[0]?.IDQUYEN : null;
-    console.log("quyen", id)
+    // console.log("quyen", id)
     return (
       <Fragment>
           {id !== 1 ?

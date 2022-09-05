@@ -4,6 +4,7 @@ import axios from 'axios';
 import {Table} from 'react-bootstrap'
 import { BsArrowLeft } from "react-icons/bs";
 
+var urlAPI = 'https://gear-api-project.herokuapp.com'
 
 const ChitietdonKH = (props) => {
       const [ctdonhang, sCTDonhang] = useState([]);
@@ -12,7 +13,7 @@ const ChitietdonKH = (props) => {
       const Donhang = () => {
         //console.log(idtk);
         console.log(id);
-        axios.get(`http://localhost:3000/ctdh/${id}`)
+        axios.get(`${urlAPI}/ctdh/${id}`)
           .then(res => {
             const ctdonhang = res.data;
             sCTDonhang(ctdonhang)

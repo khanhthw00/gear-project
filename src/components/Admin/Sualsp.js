@@ -2,6 +2,8 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 
+var urlAPI = 'https://gear-api-project.herokuapp.com'
+
 class Sualsp extends React.Component {
 
     constructor(props) {
@@ -16,7 +18,7 @@ class Sualsp extends React.Component {
   componentDidMount() {
       const id = this.props?.id
 
-      axios.get(`http://localhost:3000/loaisanpham/${id}`)
+      axios.get(`${urlAPI}/loaisanpham/${id}`)
         .then(res => {
           const news = res.data;
 
@@ -43,7 +45,7 @@ class Sualsp extends React.Component {
         }
 
         const id = this.props?.id;
-        axios.put(`http://localhost:3000/loaisanpham/${id}`, newItem, { headers: {'Accept': 'application/json','Content-Type': 'application/json'}}).then(res => {
+        axios.put(`${urlAPI}/loaisanpham/${id}`, newItem, { headers: {'Accept': 'application/json','Content-Type': 'application/json'}}).then(res => {
 
             if (res.data.status === 500) {
                 alert("Sản phẩm đã tồn tại xin vui lòng thay đổi!!! ")

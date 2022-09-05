@@ -5,7 +5,8 @@ import axios from 'axios';
 import Paypal from './Paypal';
 
 
-var urlAPI = 'http://localhost:3000'
+// var urlAPI = 'http://localhost:3000'
+var urlAPI = 'https://gear-api-project.herokuapp.com'
 
 const SPgiohang = () => {
     const [giohang, sGiohang] = useState([])
@@ -104,7 +105,7 @@ const ThanhToanArea = (props) => {
             } 
 
     const getThongTin = (id) => {
-                axios.get(`http://localhost:3000/tkkh/${id}`)
+                axios.get(`${urlAPI}/tkkh/${id}`)
                     .then(res => {
                       const khachhang = res.data;
                       sKhachhang(khachhang);
@@ -114,10 +115,11 @@ const ThanhToanArea = (props) => {
                       sAddress(khachhang[0].DIACHI)
                     })
                     .catch(error => console.log(error));
-            }
-            useEffect(() => {
-                getThongTin(id);
-            }, [id])
+    }
+    
+    useEffect(() => {
+        getThongTin(id);
+    }, [id])
 
     const isValid = () => {
                 return name !== "" && email !== "" && phone !== "" && address !== ""

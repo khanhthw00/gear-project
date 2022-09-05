@@ -24,7 +24,7 @@ import Suasp from './Suasp';
 // import Sanpham from './Sanpham';
 // import Checkloai from './Checkloai';
 
-// - ý là khi thêm loại thành công back về trang quản lý loại sp? có vì e có link vào k bk link đúng k 
+var urlAPI = 'https://gear-api-project.herokuapp.com'
 
 class Suasanpham extends React.Component {
 

@@ -2,6 +2,8 @@ import React, { Fragment } from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 
+var urlAPI = 'https://gear-api-project.herokuapp.com'
+
 class Quanly extends React.Component {
 
   constructor(props) {
@@ -12,7 +14,7 @@ class Quanly extends React.Component {
 	};
 
   componentDidMount() {
-      axios.get(`http://localhost:3000/loaisanpham`)
+      axios.get(`${urlAPI}/loaisanpham`)
         .then(res => {
           const news = res.data;
           this.setState({ news: news });

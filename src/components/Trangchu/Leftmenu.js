@@ -11,6 +11,9 @@ import {
 // const Leftmenu = () => {
 //   useSt
 // }
+
+var urlAPI = 'https://gear-api-project.herokuapp.com'
+
 class Leftmenu extends React.Component {
 
   state = {
@@ -18,7 +21,7 @@ class Leftmenu extends React.Component {
   }
 
   componentDidMount() {
-      axios.get(`http://localhost:3000/loaisanpham`)
+      axios.get(`${urlAPI}/loaisanpham`)
         .then(res => {
           const loaisp = res.data;
           this.setState({ loaisp });

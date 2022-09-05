@@ -12,6 +12,8 @@ const viewModes = {
   DTTN: 2
 }
 
+var urlAPI = 'https://gear-api-project.herokuapp.com'
+
 const Example =() => {
   const [startDate, setStartDate] = useState(new Date());
   const [date, sDate] = useState([])
@@ -19,7 +21,7 @@ const Example =() => {
   let ngay = startDate.toLocaleDateString("fr-CA")
   
   const getNgay = (ngay) => { 
-          axios.get(`http://localhost:3000/thongketheongay/${ngay}`)
+          axios.get(`${urlAPI}/thongketheongay/${ngay}`)
           .then(res => {
             const date = res.data;
             console.log(date)
@@ -82,7 +84,7 @@ class Thongkesp extends React.Component {
     }
 
     componentDidMount() {
-        axios.get(`http://localhost:3000/thongkespbanchay`)
+        axios.get(`${urlAPI}/thongkespbanchay`)
         .then(res => {
           const sanpham = res.data;
           this.setState({ sanpham: sanpham});
@@ -90,7 +92,7 @@ class Thongkesp extends React.Component {
         })
         .catch(error => console.log(error));
 
-        axios.get(`http://localhost:3000/thongkekho`)
+        axios.get(`${urlAPI}/thongkekho`)
         .then(res => {
           const sanphamkho = res.data;
           this.setState({ sanphamkho: sanphamkho});

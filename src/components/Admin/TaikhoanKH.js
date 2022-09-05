@@ -3,6 +3,8 @@ import {Link} from 'react-router-dom';
 import axios from 'axios';
 import {BsPlusSquare,BsBoxArrowInRight } from "react-icons/bs";
 
+var urlAPI = 'https://gear-api-project.herokuapp.com'
+
 class TaikhoanKH extends React.Component {
 
   state = {
@@ -10,7 +12,7 @@ class TaikhoanKH extends React.Component {
   }
 
   componentDidMount() {
-      axios.get(`http://localhost:3000/tkkh`)
+      axios.get(`${urlAPI}/tkkh`)
         .then(res => {
           const thongtin = res.data;
           this.setState({ thongtin: thongtin });

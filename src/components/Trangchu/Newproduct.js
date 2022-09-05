@@ -5,6 +5,8 @@ import axios from 'axios';
 
 import p2 from '../../images/p_2.png';
 
+var urlAPI = 'https://gear-api-project.herokuapp.com'
+
 class Newproduct extends React.Component {
 
     constructor(props) {
@@ -15,7 +17,7 @@ class Newproduct extends React.Component {
 	}
 
     componentDidMount() {
-        axios.get(`http://localhost:3000/sanphammoi`)
+        axios.get(`${urlAPI}/sanphammoi`)
         .then(res => {
           const sanpham = res.data;
           this.setState({ sanpham });
